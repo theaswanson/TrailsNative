@@ -40,10 +40,30 @@ namespace TrailsNative
             webClient2.Encoding = Encoding.UTF8;
             webClient2.DownloadStringAsync(url2);
 
-            var res = JsonConvert.DeserializeObject<RootObject>(File.ReadAllText(documentsPath + "/siteContents.json")));
+            var res = JsonConvert.DeserializeObject<RootObject>(File.ReadAllText(documentsPath + "/siteContents.json"));
             foreach (var page in res.contents.pages)
             {
-                Console.WriteLine("Name={0} Size={1}", page.Key, page.Value.size);
+                Console.WriteLine(page.name);
+                Console.WriteLine(page.slug);
+                Console.WriteLine(page.coverImage);
+                Console.WriteLine(page.body);
+            }
+            foreach (var news in res.contents.news)
+            {
+                Console.WriteLine(news.name);
+                Console.WriteLine(news.slug);
+                Console.WriteLine(news.coverImage);
+                Console.WriteLine(news.summary);
+                Console.WriteLine(news.body);
+            }
+            foreach (var events in res.contents.events)
+            {
+                Console.WriteLine(events.name);
+                Console.WriteLine(events.slug);
+                Console.WriteLine(events.date);
+                Console.WriteLine(events.coverImage);
+                Console.WriteLine(events.summary);
+                Console.WriteLine(events.body);
             }
 
 
